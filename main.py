@@ -1,12 +1,16 @@
 from mood_analyzer import analyze_mood
 from datetime import datetime
+import os
 
 entry = input("How are you feeling today?\n> ")
-today = datetime.now().strftime("%m-%d-%Y")
+emotion = analyze_mood(entry)
 
-mood = analyze_mood(entry)
+date = datetime.now().strftime("%m-%d-%Y")
+
+log_line = date + " | " + entry + " | Emotion: " + emotion + "\n"
 
 with open("mood_log.txt", "a") as file:
-    file.write(today + ": " + entry + " (Mood: " + mood + ")\n")
+    file.write(log_line)
 
-print("Your dated entry with mood was saved!")
+print("Emotion detected: " + emotion)
+print("Token:", os.getenv("HF_TOKEN"))
