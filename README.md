@@ -1,38 +1,45 @@
-# AI Mood Tracker 🧠💬
+# AI Mood Tracker 
 
-A simple Python project that lets users log their mood along with the date and time, using AI to analyze how they're feeling based on their input.
+A Python-based mood tracking application that uses Hugging Face's emotion detection model to analyze user input and log emotional data over time.
 
-## 💡 Features
+## Overview
 
-- Enter how you're feeling in plain English
-- Automatically logs your entry with the current date
-- (Coming soon!) Uses basic AI logic to label your mood
-- Stores entries in a `.txt` log file
+Users enter a short description of how they’re feeling. The app sends that input to a pre-trained Hugging Face model (`distilbert-base-uncased-emotion`) which predicts the most likely emotion (e.g., joy, sadness, anger, etc.). The result is saved with a timestamp in a local mood log.
 
-## 🛠️ Technologies
+## Features
 
-- Python
-- Replit (for development)
-- Git & GitHub (for version control)
+- Accepts natural language input describing mood
+- Uses Hugging Face API for sentiment/emotion analysis
+- Logs each entry with date, text, and predicted emotion
+- Matplotlib-powered mood trend visualizations
+- Flask web interface to display mood graphs
 
-## 📦 How to Run
+## Technologies
 
-1. Clone the repo or open it in Replit
-2. Run `main.py`
-3. Type how you feel when prompted
-4. Your entry will be saved with a timestamp
+- Python 3
+- Hugging Face Inference API
+- `requests`, `datetime`, `os`, `dotenv`
+- Git / GitHub for version control
 
-## 📈 Future Plans
+## File Structure
+- `main.py` — CLI interface for user input and logging  
+- `mood_analyzer.py` — Contains API call and mood prediction logic  
+- `mood_log.txt` — Stores historical entries  
+- `plot_moods.py` — Script to visualize mood history  
+- `app.py` — Flask web application to display mood graphs  
+- `.env` — Stores API token (not committed)  
+- `.gitignore` — Excludes sensitive or system files from Git  
 
-- Add mood categorization logic (e.g., "happy", "stressed", "anxious")
-- Visualize mood over time
-- Export log to CSV
+## How to Run
 
-## 🙋‍♀️ Author
-
-**Sophia**  
-[GitHub](https://github.com/yousophia)
-
----
-
-Feel free to fork or contribute!
+1. Clone the repository  
+2. Install dependencies:  
+   ```bash
+   pip install requests python-dotenv matplotlib flask
+3. Create a `.env` file and add your Hugging Face token like this:
+```
+HF_TOKEN=your_token_here 
+```
+4. Run the CLI app:
+```bash
+python3 main.py

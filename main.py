@@ -13,4 +13,4 @@ with open("mood_log.txt", "a") as file:
     file.write(log_line)
 
 print("Emotion detected: " + emotion)
-print("Token:", os.getenv("HF_TOKEN"))
+print("Mood entry saved!")
